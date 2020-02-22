@@ -4,28 +4,29 @@ import matplotlib.pyplot as plt
 from timeit import default_timer as timer
 
 def main():
-    """
+    
     #general demonstration of build_GUI function AKA task 2
     valid_sizes = [5, 7, 9, 11]
     grid_size = 0
+
     while grid_size not in valid_sizes:
         print('Pick a puzzle grid size: 5, 7, 9, or 11')
         grid_size = int(input())
     #general demonstratjion of execution function AKA task 3
     board = build_GUI(grid_size)
-    """
-    #board = [[3, 2, 1, 4, 1],
-    #        [3, 2, 1, 3, 3],
-    #        [3, 3, 2, 1, 4],
-    #        [3, 1, 2, 3, 3],
-    #        [1, 4, 4, 3, 0]]
+    # 
+    # #board = [[3, 2, 1, 4, 1],
+    # #        [3, 2, 1, 3, 3],
+    # #        [3, 3, 2, 1, 4],
+    # #        [3, 1, 2, 3, 3],
+    # #        [1, 4, 4, 3, 0]]
 
-    board = [[2, 2, 2, 4, 3],
-            [2, 2, 3, 3, 3],
-            [3, 3, 2, 3, 3],
-            [4, 3, 2, 2, 2],
-            [1, 2, 1, 4, 0]]
-    grid_size = 5
+    # board = [[2, 2, 2, 4, 3],
+    #         [2, 2, 3, 3, 3],
+    #         [3, 3, 2, 3, 3],
+    #         [4, 3, 2, 2, 2],
+    #         [1, 2, 1, 4, 0]]
+    # grid_size = 5
     visited, val_func = evaluate(board, grid_size)
 
     print('------------------------------------')
@@ -38,7 +39,7 @@ def main():
     board_collection, size, valfunc_max, x_vals, y_vals = hill_climb(board, grid_size, 200)
     hillboard, val_func = board_collection[-1]
     pboard(hillboard, grid_size, val_func)
-    graphit(x_vals, y_vals)
+    graphit(x_vals, y_vals, size)
 
     #print(board_collection)
 
@@ -283,11 +284,11 @@ def hill_climb(board, size, iterations):
     return board_collection, size, valfunc_max, x_vals, y_vals
 
     
-def graphit(x_vals, y_vals):
+def graphit(x_vals, y_vals, size):
     plt.plot(x_vals, y_vals)
     plt.xlabel('number of hill climb iterations')
     plt.ylabel('max value function')
-    plt.title('max value functions over # of iterations')
+    plt.title('max value functions over # of iterations(size={})'.format(size))
     plt.show()
     print("Close graph window to continue...")
 
